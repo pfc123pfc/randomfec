@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./css/images/random icon.ico">
+
+    <link rel="stylesheet" href="/css/Randomizer.css" />
+    <link rel="stylesheet" href="/css/Animated-Dices.css" />
+
+    <title>Randomizer</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Follow us on Instagram! </h1>
+        </nav>
+    </header>
+    <main class="main-container">
+        <section>
+            <div class="icon">
+                <div class="icon-content" onclick="toggleColorBox()">
+                    <img src="./css/images/settings.png" alt="icon">
+                </div>
+                <div class="color-box-hide" id="color-box-id">
+                    <h3>Options</h3>
+                    <div class="auto-number-generator" id="number-generator">
+                        <h3>Line Adder</h3>
+                        <div class="auto-number-inputs">
+                            <input type="number" id="quantity1" name="quantity" min="1" placeholder="min 1">
+                            <span>To </span>
+                            <input type="number" id="quantity2" name="quantity" min="2" max="10000" placeholder="max 10000">
+                        </div>
+                        <button type="button" id="number-button" onclick="autoGenerateNumbers()">Add</button>
+                    </div>
+
+                    <div class="color-box-button" style="margin: 1rem 0;">
+                        <button type="button" class="reset-button" onclick="resetValue()">Reset</button>
+                    </div>
+
+                    <h3>Color Mode</h3>
+                    <div class="color-wheel">
+                        <canvas id=canvas></canvas>
+                    </div>
+
+                    <div class="inputs-list">
+                        <h3>HEX</h3>
+                        <input onclick="picker.editInput(event.target)" onchange="picker.editInput(event.target)"
+                            class="multi-input input-quad" value="#E8F0FE">
+                    </div>
+                </div>
+            </div>
+            <h4>Fast Eddies Collectibles Randomizer</h4>
+
+            <form class="input-form">
+                <div>
+                    <aside>Type to add items, each on a new line.</aside>
+                    <textarea name="text-box" id="text-box" oninput="toggleNumberBox()"></textarea>
+                </div>
+                <div class="counter">
+                    <h3>Randomize Counter: <span id="counter-value"></span></h3>
+                </div>
+                <div class="dice-counter">
+                    <h3>Dice Roll Result: <span id="dice-value">2</span></h3>
+                </div>
+                <div class="time-stamp">
+                    <h3>Timestamp: <span id="time-value"></span></h3>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="randomize-button" onclick="randomize()">Randomize</button>
+                    <button type="button" class="reset-button" onclick="resetValue()">Reset</button>
+                </div>
+            </form>
+
+            <div class="rolling-dices">
+
+                <div class="dice">
+                    <div class="d1">
+                        <ol class="die-list even-roll" data-roll="1" id="die-1" onclick="rollDice1()">
+                            <li class="die-item" data-side="1">
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="2">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="3">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="4">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="5">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="6">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="d1">
+                        <ol class="die-list even-roll" data-roll="1" id="die-2" onclick="rollDice2()">
+                            <li class="die-item" data-side="1">
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="2">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="3">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="4">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="5">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                            <li class="die-item" data-side="6">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </li>
+                        </ol>
+
+                    </div>
+
+                </div>
+                <button type="button" id="roll-button">Roll Dice</button>
+            </div>
+
+            <div class="color-section">
+
+                <!-- <button type="button" id="edit-button" onclick="toggleColorBox()"></button> -->
+
+
+                <!-- <div class="color-box-hide" id="color-box-id">
+                    <div class="color-wheel">
+                        <canvas id=canvas></canvas>
+                    </div>
+
+                    <div class="inputs-list">
+                        <input onclick="picker.editInput(event.target)" onchange="picker.editInput(event.target)"
+                            class="multi-input input-quad" value="#E8F0FE">
+                    </div>
+                </div> -->
+            </div>
+        </section>
+    </main>
+    <footer>
+    </footer>
+
+
+    <script src="javascript/Randomizer.js"></script>
+    <script src="javascript/Animated-dices.js"></script>
+    <script src="javascript/html5kellycolorpicker.js"></script>
+    <script src="javascript/ColorChanger.js"></script>
+</body>
+
+</html>

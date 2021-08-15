@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+   box-sizing: border-box;
+  }
+ 
+  .dice {
+   display: flex;
+   align-items: center;
+  }
+  .die-list {
+    width:6rem;
+    height: 6rem;
+    display: grid;
+    list-style-type: none;
+    transform-style: preserve-3d;
+  }
+   .even-roll {
+    transition: transform 3.5s ease-in-out;
+  }
+   .odd-roll {
+    transition: transform 3.25s ease-in-out;
+  }  
+  .die-item {
+    
+    background-color: rgb(28,28,28);
+    display: grid;
+    grid-column: 1;
+    grid-row: 1;
+    grid-template-areas:
+      "one two three"
+      "four five six"
+      "seven eight nine";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width:100%;
+    height:100%;
+    outline:1px solid black;
+  }
+  .dot {
+    display: block;
+    justify-self: center;
+    align-self: center;
+    background-color:white;
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    box-shadow: 1px 1px 10px 1px #797676;
+  }
+  
+  .even-roll[data-roll="1"] {
+    transform: rotateX(1080deg) rotateY(1440deg) rotateZ(1080deg);
+  }
+  .even-roll[data-roll="2"] {
+    transform: rotateX(1170deg) rotateY(1440deg) rotateZ(1080deg);
+  }
+  .even-roll[data-roll="3"] {
+    transform: rotateX(1080deg) rotateY(1350deg) rotateZ(1080deg);
+  }
+  .even-roll[data-roll="4"] {
+    transform: rotateX(1080deg) rotateY(1530deg) rotateZ(1080deg);
+  }
+  .even-roll[data-roll="5"] {
+    transform: rotateX(990deg) rotateY(1440deg) rotateZ(1080deg);
+  }
+  .even-roll[data-roll="6"] {
+    transform: rotateX(1080deg) rotateY(1620deg) rotateZ(1080deg);
+  }
+   .odd-roll[data-roll="1"] {
+    transform: rotateX(-1080deg) rotateY(-1440deg) rotateZ(1080deg);
+  }
+  .odd-roll[data-roll="2"] {
+    transform: rotateX(-990deg) rotateY(-1440deg) rotateZ(1080deg);
+  }
+  .odd-roll[data-roll="3"] {
+    transform: rotateX(-1080deg) rotateY(-1530deg) rotateZ(1080deg);
+  }
+  .odd-roll[data-roll="4"] {
+    transform: rotateX(-1080deg) rotateY(-1350deg) rotateZ(1080deg);
+  }
+  .odd-roll[data-roll="5"] {
+    transform: rotateX(-1170deg) rotateY(-1440deg) rotateZ(1080deg);
+  }
+  .odd-roll[data-roll="6"] {
+    transform: rotateX(-1080deg) rotateY(-1620deg) rotateZ(1080deg);
+  } 
+  [data-side="1"] {
+    transform: rotate3d(0, 0, 0, 90deg) translateZ(3rem);
+  }
+  [data-side="2"] {
+    transform: rotate3d(-1, 0, 0, 90deg) translateZ(3rem);
+  }
+  [data-side="3"] {
+    transform: rotate3d(0, 1, 0, 90deg) translateZ(3rem);
+  }
+  [data-side="4"] {
+    transform: rotate3d(0, -1, 0, 90deg) translateZ(3rem);
+  }
+  [data-side="5"] {
+    transform: rotate3d(1, 0, 0, 90deg) translateZ(3rem);
+  }
+  [data-side="6"] {
+    transform: rotate3d(1, 0, 0, 180deg) translateZ(3rem);
+  }
+  [data-side="1"] .dot:nth-of-type(1) {
+    grid-area: five;
+  }
+  [data-side="2"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="2"] .dot:nth-of-type(2) {
+    grid-area: nine;
+  }
+  [data-side="3"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="3"] .dot:nth-of-type(2) {
+    grid-area: five;
+  }
+  [data-side="3"] .dot:nth-of-type(3) {
+    grid-area: nine;
+  }
+  [data-side="4"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="4"] .dot:nth-of-type(2) {
+    grid-area: three;
+  }
+  [data-side="4"] .dot:nth-of-type(3) {
+    grid-area: seven;
+  }
+  [data-side="4"] .dot:nth-of-type(4) {
+    grid-area: nine;
+  }
+  [data-side="5"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="5"] .dot:nth-of-type(2) {
+    grid-area: three;
+  }
+  [data-side="5"] .dot:nth-of-type(3) {
+    grid-area: five;
+  }
+  [data-side="5"] .dot:nth-of-type(4) {
+    grid-area: seven;
+  }
+  [data-side="5"] .dot:nth-of-type(5) {
+    grid-area: nine;
+  }
+  [data-side="6"] .dot:nth-of-type(1) {
+    grid-area: one;
+  }
+  [data-side="6"] .dot:nth-of-type(2) {
+    grid-area: three;
+  }
+  [data-side="6"] .dot:nth-of-type(3) {
+    grid-area: four;
+  }
+  [data-side="6"] .dot:nth-of-type(4) {
+    grid-area: six;
+  }
+  [data-side="6"] .dot:nth-of-type(5) {
+    grid-area: seven;
+  }
+  [data-side="6"] .dot:nth-of-type(6) {
+    grid-area: nine;
+  }
+  
